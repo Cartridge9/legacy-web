@@ -1,24 +1,26 @@
 import LegacyButton from "@components/common/LegacyButton";
 import * as S from "./style";
 import { LegacyPalette } from "@src/constants/color/color";
-import { Dispatch, SetStateAction } from "react";
+// import { Dispatch, SetStateAction } from "react";
 import useUserStore from "@src/store/useUserStore";
 import { useState } from "react";
 import { ChangeEvent } from "react";
-import { toast } from "react-toastify";
-import { usePatchUserDataMutation } from "@src/queries/user/user.queries";
+// import { toast } from "react-toastify";
+// import { usePatchUserDataMutation } from "@src/queries/user/user.queries";
 
-type ProfileFixProps = {
-  setIsProfileFixPage: Dispatch<SetStateAction<boolean>>;  
-};
+// type ProfileFixProps = {
+//   setIsProfileFixPage: Dispatch<SetStateAction<boolean>>;  
+// };
 
-const ProfileFix = ({ setIsProfileFixPage }: ProfileFixProps) => {
+const ProfileFix = (
+  // { setIsProfileFixPage }: ProfileFixProps
+) => {
   const { userStoreData } = useUserStore();
-  const [successData, setSuccessData] = useState({
-    isLoading: false,
-    code: 0,
-  });
-  const patchUserDataMutation = usePatchUserDataMutation();
+  // const [successData, setSuccessData] = useState({
+  //   isLoading: false,
+  //   code: 0,
+  // });
+  // const patchUserDataMutation = usePatchUserDataMutation();
 
   const [changedUserData, setChangedUserData] = useState({
     imageUrl: userStoreData.imageUrl,
@@ -36,18 +38,18 @@ const ProfileFix = ({ setIsProfileFixPage }: ProfileFixProps) => {
     return true
   }
 
-  const completeFix = () => {
-    if (!checkChanged()) {
-      toast.error("변경 데이터가 없습니다!");
-    } else {
-      setSuccessData(prev => ({...prev, isLoading: true}))
-      patchUserDataMutation.mutate({description: changedUserData.description}, {
-        onSuccess: () => {
-          setSuccessData(prev => ({...prev, code: prev.code + 1}))
-        }
-      })
-    }
-  }
+  // const completeFix = () => {
+  //   if (!checkChanged()) {
+  //     toast.error("변경 데이터가 없습니다!");
+  //   } else {
+  //     setSuccessData(prev => ({...prev, isLoading: true}))
+  //     patchUserDataMutation.mutate({description: changedUserData.description}, {
+  //       onSuccess: () => {
+  //         setSuccessData(prev => ({...prev, code: prev.code + 1}))
+  //       }
+  //     })
+  //   }
+  // }
 
   return (
     <S.ProfileFixContainer>
@@ -60,7 +62,7 @@ const ProfileFix = ({ setIsProfileFixPage }: ProfileFixProps) => {
           color={LegacyPalette.primaryNormal}
           customStyle={{color: checkChanged() ? LegacyPalette.primaryNormal : LegacyPalette.labelDisabled}}
           width="fit-content"
-          handleClick={() => completeFix()}
+          // handleClick={() => completeFix()}
         >
           저장하기
         </LegacyButton>
