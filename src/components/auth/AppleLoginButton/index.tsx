@@ -6,7 +6,7 @@ const AppleLoginButton = () => {
   useEffect(() => {
     if (typeof window !== 'undefined' && window.AppleID?.auth?.init) {
       window.AppleID.auth.init({
-        clientId: import.meta.env.VITE_APP_APPLE_CLIENT_ID,
+        clientId: `${import.meta.env.VITE_APP_APPLE_CLIENT_ID}`,
         scope: "name",
         redirectURI: "http://localhost:9999/login/apple/verify",
         state: "",
